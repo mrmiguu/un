@@ -7,7 +7,9 @@ b, err := json.Marshal(data)
 if err != nil {
     panic(err)
 }
+
 ...
+
 reData := Data{}
 err = json.Unmarshal(b, &reData)
 if err != nil {
@@ -18,7 +20,9 @@ if err != nil {
 After!
 ```go
 b := un.Bytes(json.Marshal(data))
+
 ...
+
 reData := Data{}
 un.Wrap(json.Unmarshal(b, &reData))
 ```
