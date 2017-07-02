@@ -1,7 +1,7 @@
 # un
 un.Wrap your errors
 
-Before:
+<b>Before:</b>
 ```go
 b, err := json.Marshal(data)
 if err != nil {
@@ -17,7 +17,7 @@ if err != nil {
 }
 ```
 
-After!
+<b>After!</b>
 ```go
 b := un.Bytes(json.Marshal(data))
 
