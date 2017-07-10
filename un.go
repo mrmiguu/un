@@ -1,10 +1,24 @@
 package un
 
+import (
+	"reflect"
+)
+
 func Wrap(err error) {
 	if err != nil {
 		panic(err)
 	}
 }
+
+type t struct {
+	v reflect.Value
+}
+
+func (t t) Get(ptr interface{}) {
+	reflect.Indirect(reflect.ValueOf(ptr)).Set(reflect.Indirect(t.v))
+}
+
+func T(v interface{}, err error) t                       { Wrap(err); return t{reflect.ValueOf(v)} }
 func Bool(b bool, err error) bool                        { Wrap(err); return b }
 func String(s string, err error) string                  { Wrap(err); return s }
 func Int(i int, err error) int                           { Wrap(err); return i }
