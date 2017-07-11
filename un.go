@@ -10,15 +10,15 @@ func Wrap(err error) {
 	}
 }
 
-type t struct {
+type unknown struct {
 	v reflect.Value
 }
 
-func (t t) Get(ptr interface{}) {
-	reflect.Indirect(reflect.ValueOf(ptr)).Set(reflect.Indirect(t.v))
+func (u unknown) T(ptr interface{}) {
+	reflect.Indirect(reflect.ValueOf(ptr)).Set(reflect.Indirect(u.v))
 }
 
-func T(v interface{}, err error) t                       { Wrap(err); return t{reflect.ValueOf(v)} }
+func Known(v interface{}, err error) unknown             { Wrap(err); return unknown{reflect.ValueOf(v)} }
 func Bool(b bool, err error) bool                        { Wrap(err); return b }
 func String(s string, err error) string                  { Wrap(err); return s }
 func Int(i int, err error) int                           { Wrap(err); return i }
